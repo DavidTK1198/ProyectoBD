@@ -4,170 +4,239 @@ import Clases.Service;
 import Clases.TableModelAuditoria;
 
 public class Auditoria extends javax.swing.JFrame {
-    
-    Service s;
-    
-    public Auditoria(Service S) {
-        this.s = S;
+
+    private Service s;
+
+    public Auditoria(Service s) {
+        this.s = s;
+        configurar();
+    }
+
+    private void configurar() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
-    
+
     public void mostrarEstado(String estado) {
         etiqueta_estado.setText(estado);
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
-        jColorChooser1 = new javax.swing.JColorChooser();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
-        jPanel2 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         Btn_MenuPrincipal = new javax.swing.JButton();
-        Btn_AuditarUpdate = new javax.swing.JButton();
-        Btn_AuditarInsert = new javax.swing.JButton();
-        Btn_AuditarTablas = new javax.swing.JButton();
-        Btn_AuditarDelete = new javax.swing.JButton();
         Btn_AuditarConexiones = new javax.swing.JButton();
+        Btn_AuditarTablas = new javax.swing.JButton();
+        Btn_AuditarInsert = new javax.swing.JButton();
         Btn_AuditarSelect = new javax.swing.JButton();
+        Btn_AuditarDelete = new javax.swing.JButton();
+        Btn_AuditarUpdate = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
         etiqueta_estado = new javax.swing.JLabel();
-
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 32767));
+        btnAuditarTodos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(850, 470));
-        getContentPane().setLayout(null);
-        getContentPane().add(filler1);
-        filler1.setBounds(0, 0, 0, 0);
-
-        jPanel2.setBackground(new java.awt.Color(102, 102, 102));
-        jPanel2.setForeground(new java.awt.Color(255, 255, 255));
-        jPanel2.setLayout(null);
+        setBackground(new java.awt.Color(51, 51, 51));
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setBackground(new java.awt.Color(102, 102, 102));
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Arial Black", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Auditoria");
-        jPanel2.add(jLabel1);
-        jLabel1.setBounds(100, 10, 654, 22);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        getContentPane().add(jLabel1, gridBagConstraints);
 
-        Btn_MenuPrincipal.setBackground(new java.awt.Color(0, 0, 0));
+        Btn_MenuPrincipal.setBackground(new java.awt.Color(102, 102, 102));
         Btn_MenuPrincipal.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         Btn_MenuPrincipal.setForeground(new java.awt.Color(255, 255, 255));
         Btn_MenuPrincipal.setText("Atras");
-        Btn_MenuPrincipal.setBorderPainted(false);
         Btn_MenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_MenuPrincipalActionPerformed(evt);
             }
         });
-        jPanel2.add(Btn_MenuPrincipal);
-        Btn_MenuPrincipal.setBounds(10, 290, 130, 20);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.SOUTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        getContentPane().add(Btn_MenuPrincipal, gridBagConstraints);
 
-        Btn_AuditarUpdate.setBackground(new java.awt.Color(0, 0, 0));
-        Btn_AuditarUpdate.setForeground(new java.awt.Color(255, 255, 255));
-        Btn_AuditarUpdate.setText("Auditar Updates");
-        Btn_AuditarUpdate.setBorderPainted(false);
-        Btn_AuditarUpdate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_AuditarUpdateActionPerformed(evt);
-            }
-        });
-        jPanel2.add(Btn_AuditarUpdate);
-        Btn_AuditarUpdate.setBounds(10, 250, 127, 23);
-
-        Btn_AuditarInsert.setBackground(new java.awt.Color(0, 0, 0));
-        Btn_AuditarInsert.setForeground(new java.awt.Color(255, 255, 255));
-        Btn_AuditarInsert.setText("Auditar Inserts ");
-        Btn_AuditarInsert.setBorderPainted(false);
-        Btn_AuditarInsert.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_AuditarInsertActionPerformed(evt);
-            }
-        });
-        jPanel2.add(Btn_AuditarInsert);
-        Btn_AuditarInsert.setBounds(10, 130, 127, 23);
-
-        Btn_AuditarTablas.setBackground(new java.awt.Color(0, 0, 0));
-        Btn_AuditarTablas.setForeground(new java.awt.Color(255, 255, 255));
-        Btn_AuditarTablas.setText("Auditar Tablas ");
-        Btn_AuditarTablas.setBorderPainted(false);
-        Btn_AuditarTablas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_AuditarTablasActionPerformed(evt);
-            }
-        });
-        jPanel2.add(Btn_AuditarTablas);
-        Btn_AuditarTablas.setBounds(10, 90, 127, 23);
-
-        Btn_AuditarDelete.setBackground(new java.awt.Color(0, 0, 0));
-        Btn_AuditarDelete.setForeground(new java.awt.Color(255, 255, 255));
-        Btn_AuditarDelete.setText("Auditar Deletes");
-        Btn_AuditarDelete.setBorderPainted(false);
-        Btn_AuditarDelete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_AuditarDeleteActionPerformed(evt);
-            }
-        });
-        jPanel2.add(Btn_AuditarDelete);
-        Btn_AuditarDelete.setBounds(10, 210, 127, 23);
-
-        Btn_AuditarConexiones.setBackground(new java.awt.Color(0, 0, 0));
+        Btn_AuditarConexiones.setBackground(new java.awt.Color(51, 51, 51));
+        Btn_AuditarConexiones.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         Btn_AuditarConexiones.setForeground(new java.awt.Color(255, 255, 255));
         Btn_AuditarConexiones.setText("Auditar Conexiones");
-        Btn_AuditarConexiones.setBorderPainted(false);
         Btn_AuditarConexiones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_AuditarConexionesActionPerformed(evt);
             }
         });
-        jPanel2.add(Btn_AuditarConexiones);
-        Btn_AuditarConexiones.setBounds(10, 50, 140, 23);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        getContentPane().add(Btn_AuditarConexiones, gridBagConstraints);
 
-        Btn_AuditarSelect.setBackground(new java.awt.Color(0, 0, 0));
+        Btn_AuditarTablas.setBackground(new java.awt.Color(51, 51, 51));
+        Btn_AuditarTablas.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        Btn_AuditarTablas.setForeground(new java.awt.Color(255, 255, 255));
+        Btn_AuditarTablas.setText("Auditar Tablas ");
+        Btn_AuditarTablas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_AuditarTablasActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        getContentPane().add(Btn_AuditarTablas, gridBagConstraints);
+
+        Btn_AuditarInsert.setBackground(new java.awt.Color(51, 51, 51));
+        Btn_AuditarInsert.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        Btn_AuditarInsert.setForeground(new java.awt.Color(255, 255, 255));
+        Btn_AuditarInsert.setText("Auditar Inserts ");
+        Btn_AuditarInsert.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_AuditarInsertActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        getContentPane().add(Btn_AuditarInsert, gridBagConstraints);
+
+        Btn_AuditarSelect.setBackground(new java.awt.Color(51, 51, 51));
+        Btn_AuditarSelect.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
         Btn_AuditarSelect.setForeground(new java.awt.Color(255, 255, 255));
         Btn_AuditarSelect.setText("Auditar Selects");
-        Btn_AuditarSelect.setBorderPainted(false);
         Btn_AuditarSelect.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Btn_AuditarSelectActionPerformed(evt);
             }
         });
-        jPanel2.add(Btn_AuditarSelect);
-        Btn_AuditarSelect.setBounds(10, 170, 127, 23);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        getContentPane().add(Btn_AuditarSelect, gridBagConstraints);
+
+        Btn_AuditarDelete.setBackground(new java.awt.Color(51, 51, 51));
+        Btn_AuditarDelete.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        Btn_AuditarDelete.setForeground(new java.awt.Color(255, 255, 255));
+        Btn_AuditarDelete.setText("Auditar Deletes");
+        Btn_AuditarDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_AuditarDeleteActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        getContentPane().add(Btn_AuditarDelete, gridBagConstraints);
+
+        Btn_AuditarUpdate.setBackground(new java.awt.Color(51, 51, 51));
+        Btn_AuditarUpdate.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        Btn_AuditarUpdate.setForeground(new java.awt.Color(255, 255, 255));
+        Btn_AuditarUpdate.setText("Auditar Updates");
+        Btn_AuditarUpdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Btn_AuditarUpdateActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        getContentPane().add(Btn_AuditarUpdate, gridBagConstraints);
 
         jScrollPane1.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
         jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
+        jTable1.setBackground(new java.awt.Color(153, 153, 153));
         jTable1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jTable1.setModel( new Clases.TableModelAuditoria()
         );
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel2.add(jScrollPane1);
-        jScrollPane1.setBounds(190, 50, 600, 330);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridheight = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.ipadx = 4;
+        gridBagConstraints.ipady = 4;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.weighty = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(8, 8, 8, 8);
+        getContentPane().add(jScrollPane1, gridBagConstraints);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED));
-        jPanel1.setLayout(new java.awt.GridBagLayout());
 
         etiqueta_estado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         etiqueta_estado.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         etiqueta_estado.setText("Estado");
-        jPanel1.add(etiqueta_estado, new java.awt.GridBagConstraints());
+        jPanel1.add(etiqueta_estado);
 
-        jPanel2.add(jPanel1);
-        jPanel1.setBounds(160, 400, 654, 29);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.ipadx = 4;
+        gridBagConstraints.ipady = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.weightx = 0.1;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        getContentPane().add(jPanel1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        getContentPane().add(filler1, gridBagConstraints);
 
-        getContentPane().add(jPanel2);
-        jPanel2.setBounds(0, 0, 850, 440);
+        btnAuditarTodos.setBackground(new java.awt.Color(51, 51, 51));
+        btnAuditarTodos.setFont(new java.awt.Font("Arial", 0, 12)); // NOI18N
+        btnAuditarTodos.setForeground(new java.awt.Color(255, 255, 255));
+        btnAuditarTodos.setText("Auditar todos");
+        btnAuditarTodos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAuditarTodos(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
+        getContentPane().add(btnAuditarTodos, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -188,7 +257,7 @@ public class Auditoria extends javax.swing.JFrame {
         TableModelAuditoria a = (TableModelAuditoria) jTable1.getModel();
         a.auditarConexiones();
         mostrarEstado(String.format("Se encontraron %d registros de Conexión.", a.getRowCount()));
-        
+
     }//GEN-LAST:event_Btn_AuditarConexionesActionPerformed
 
     private void Btn_AuditarTablasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_AuditarTablasActionPerformed
@@ -215,6 +284,13 @@ public class Auditoria extends javax.swing.JFrame {
         mostrarEstado(String.format("Se encontraron %d de registros de Deletes.", a.getRowCount()));
     }//GEN-LAST:event_Btn_AuditarDeleteActionPerformed
 
+    private void btnAuditarTodos(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAuditarTodos
+       TableModelAuditoria a = (TableModelAuditoria) jTable1.getModel();
+        a.auditarTodos();
+        mostrarEstado(String.format("Se encontraron %d de registros de auditoría.", a.getRowCount()));
+
+    }//GEN-LAST:event_btnAuditarTodos
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Btn_AuditarConexiones;
@@ -224,13 +300,11 @@ public class Auditoria extends javax.swing.JFrame {
     private javax.swing.JButton Btn_AuditarTablas;
     private javax.swing.JButton Btn_AuditarUpdate;
     private javax.swing.JButton Btn_MenuPrincipal;
+    private javax.swing.JButton btnAuditarTodos;
     private javax.swing.JLabel etiqueta_estado;
     private javax.swing.Box.Filler filler1;
-    private javax.swing.JColorChooser jColorChooser1;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables

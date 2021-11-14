@@ -10,6 +10,7 @@ import javax.swing.table.DefaultTableModel;
 
 public class TableModelAuditoria extends DefaultTableModel {
 
+    private final Service service = Service.instance();
     private final ArrayList<String> headers;
     private final ArrayList<RegistroDatos<String>> datos;
 
@@ -20,32 +21,38 @@ public class TableModelAuditoria extends DefaultTableModel {
     }
 
     public void auditarConexiones() {
-        cargarTabla(Service.instance().getConexion().getConnection(),
-                "Select username, action_name , priv_used , returncode from dba_audit_trail");
+        cargarTabla(service.getConexion().getConnection(),
+                "select username, action_name, priv_used, returncode from dba_audit_trail");
     }
 
     public void auditarTablas() {
-        cargarTabla(Service.instance().getConexion().getConnection(),
-                "Select * from user_obj_audit_opts");
+        cargarTabla(service.getConexion().getConnection(),
+                "select * from user_obj_audit_opts");
+    }
+
+    public void auditarTodos() {
+        cargarTabla(service.getConexion().getConnection(),
+                "select * from sys.dba_audit_trail");
     }
 
     public void auditarInsert() {
-        cargarTabla(Service.instance().getConexion().getConnection(),
-                "Select * from sys.dba_audit_trail where action_name = 'INSERT'");
+        cargarTabla(service.getConexion().getConnection(),
+                "select * from sys.dba_audit_trail where action_name = 'INSERT'");
     }
 
     public void auditarSelect() {
-        cargarTabla(Service.instance().getConexion().getConnection(),
-                "Select * from sys.dba_audit_trail where action_name = 'SELECT'");
+        cargarTabla(service.getConexion().getConnection(),
+                "select * from sys.dba_audit_trail where action_name = 'SELECT'");
     }
 
     public void auditarDelete() {
-
+        cargarTabla(service.getConexion().getConnection(),
+                "select * from sys.dba_audit_trail where action_name = 'DELETE'");
     }
 
     public void auditarUpdate() {
-        cargarTabla(Service.instance().getConexion().getConnection(),
-                "Select * from sys.dba_audit_trail where action_name ='UPDATE'");
+        cargarTabla(service.getConexion().getConnection(),
+                "select * from sys.dba_audit_trail where action_name ='UPDATE'");
     }
 
     @Override
@@ -83,11 +90,12 @@ public class TableModelAuditoria extends DefaultTableModel {
         headers.clear();
         datos.clear();
 
-        try ( Statement stm = cnx.createStatement();  ResultSet rs = stm.executeQuery(selectCmd)) {
+        try (Statement stm = cnx.createStatement();
+                ResultSet rs = stm.executeQuery(selectCmd)) {
 
-// Carga los nombres de cada campo de la tabla
-// en la lista de encabezados.
-//
+            // Carga los nombres de cada campo de la tabla
+            // en la lista de encabezados.
+            //
             for (int i = 0; i < rs.getMetaData().getColumnCount(); i++) {
                 headers.add(rs.getMetaData().getColumnName(i + 1));
             }
@@ -96,14 +104,14 @@ public class TableModelAuditoria extends DefaultTableModel {
             while (rs.next()) {
                 RegistroDatos<String> row = new RegistroDatos<>();
 
-// Carga los datos asociados a cada campo en el registro.
-//
+                // Carga los datos asociados a cada campo en el registro.
+                //
                 for (int i = 0; i < n; i++) {
                     row.addFieldData(rs.getString(i + 1));
                 }
 
-// Agrega el registro a la lista..
-//
+                // Agrega el registro a la lista..
+                //
                 datos.add(row);
             }
 
@@ -111,6 +119,7 @@ public class TableModelAuditoria extends DefaultTableModel {
             System.err.println(ex.getMessage());
         }
 
+        System.out.println(this);
         fireTableStructureChanged();
         fireTableDataChanged();
     }
