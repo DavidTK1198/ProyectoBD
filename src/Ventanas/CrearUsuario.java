@@ -204,7 +204,14 @@ public class CrearUsuario extends javax.swing.JFrame {
     }
 
     private void btnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCrearActionPerformed
-        Query consulta = new Query("create user " + this.txtUsuario.getText() + " identified by " + this.txtPassword.getText());
+        Query consulta;
+        if (tablasComboBox.getSelectedItem().toString() == "Seleccionar" && tempsComboBox.getSelectedItem().toString() == "Seleccionar") {
+            consulta = new Query("create user " + this.txtUsuario.getText() + " identified by " + this.txtPassword.getText());
+        } else {
+            String temp = tempsComboBox.getSelectedItem().toString();
+            String tableSpace = tablasComboBox.getSelectedItem().toString();
+            consulta = new Query("create user " + this.txtUsuario.getText() + " identified by " + this.txtPassword.getText() + " DEFAULT TABLESPACE " +tableSpace + " TEMPORARY TABLESPACE " + temp);
+        }
         this.txtResultado.setText(consulta.executeQuery(s, "2"));
         this.txtPassword.setText("");
         this.txtUsuario.setText("");
